@@ -29,8 +29,8 @@ async function getData() {
   let data = await res.json();
   console.log(data);
   let messages = [];
-  data.messages.forEach((e) => messages.push(getMessages(e.id)));
-  console.log(messages);
+//   data.messages.forEach((e) => messages.push(getMessages(e.id)));
+//   console.log(messages);
   } catch(err){
     console.log(err)
   }
@@ -38,19 +38,21 @@ async function getData() {
 
 getData();
 
-async function getMessages(id) {
+async function getMessages() {
   try{
   let msg = await fetch(
     url +
-      `/${id}?access_token=ya2.a90AfH6SMBfrIKm3EQy0tK7y8HIeErf-uzDI2s3mDC-ADK04Gb99iFsvGB--WcY6iMaDQkV2KKZeKABTSSPFg-YYGqmXlBmZrW2ipo-HeeXgfDhZ_TWDeibkgG99KodQl-spq0go9yKrhJ5DIT0ZZcRufrCZTcg`
+      `/178e9d13d2acc926?access_token=ya2.a90AfH6SMBfrIKm3EQy0tK7y8HIeErf-uzDI2s3mDC-ADK04Gb99iFsvGB--WcY6iMaDQkV2KKZeKABTSSPFg-YYGqmXlBmZrW2ipo-HeeXgfDhZ_TWDeibkgG99KodQl-spq0go9yKrhJ5DIT0ZZcRufrCZTcg`
   );
   let msg_data = await msg.json();
+    console.log(msg_data)
   return msg_data;
   } catch(err){
    console.log(err)
   }
 }
 
+getMessages()
 
 //https://tharun-coder.github.io/Gmail_temp/#state=try_sample_request&
 //access_token=ya29.a0AfH6SMBfrIKm3EQy0tK7y8HIeErf-uzDI2s3mDC-ADK04Gb99iFsvGB--WcY6iMaDQkV2KKZeKABTSSPFg-YYGqmXlBmZrW2ipo-HeeXgfDhZ_TWDeibkgG99KodQl-spq0go9yKrhJ5DIT0ZZcRufrCZTcg&
