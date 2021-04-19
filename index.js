@@ -38,8 +38,8 @@ getData();
 
 async function getMessages(id) {
   let msg = await fetch(
-    url`/${id}` +
-      `?access_token=ya2.a90AfH6SMBfrIKm3EQy0tK7y8HIeErf-uzDI2s3mDC-ADK04Gb99iFsvGB--WcY6iMaDQkV2KKZeKABTSSPFg-YYGqmXlBmZrW2ipo-HeeXgfDhZ_TWDeibkgG99KodQl-spq0go9yKrhJ5DIT0ZZcRufrCZTcg`
+    url +
+      `/${id}?access_token=ya2.a90AfH6SMBfrIKm3EQy0tK7y8HIeErf-uzDI2s3mDC-ADK04Gb99iFsvGB--WcY6iMaDQkV2KKZeKABTSSPFg-YYGqmXlBmZrW2ipo-HeeXgfDhZ_TWDeibkgG99KodQl-spq0go9yKrhJ5DIT0ZZcRufrCZTcg`
   );
   let msg_data = await msg.json();
   console.log(msg_data);
