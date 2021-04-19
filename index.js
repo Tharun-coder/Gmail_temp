@@ -15,7 +15,7 @@ async function getToken() {
     redirect_uri=https://tharun-coder.github.io/Gmail_temp/&
     client_id=${client_id}`);
 //   let data = res.json();
-  console.log(res.url);
+  console.log(res);
 }
 
 getToken();
