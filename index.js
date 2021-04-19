@@ -6,3 +6,5 @@ async function getData() {
   let data = await res.json();
   console.log(data);
 }
+
+getData();
