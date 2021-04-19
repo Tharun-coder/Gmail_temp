@@ -8,7 +8,7 @@ let token_url = "https://accounts.google.com/o/oauth2/token";
 
 async function getToken() {
   let res = await fetch(`https://accounts.google.com/o/oauth2/v2/auth?
-    scope=https//www.googleapis.com/&
+    scope=https://mail.google.com/&
     include_granted_scopes=true&
     response_type=token&
     state=state_parameter_passthrough_value&
