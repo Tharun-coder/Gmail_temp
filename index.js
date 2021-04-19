@@ -14,23 +14,23 @@ async function getToken() {
     state=state_parameter_passthrough_value&
     redirect_uri=https://tharun-coder.github.io/Gmail_temp/&
     client_id=${client_id}`);
-//   let data = res.json();
-  console.log(res);
-}
-
-getToken();
-
-async function getData() {
-  let res = await fetch(
-    url +
-      `?access_token=ya29.a0AfH6SMAahj-HXMdv-NmCEbKAem5mS8swb6hkuUydmG4yiv1Kn9wCQ9CeFw3jNj-gsh-oLx6INE6VrOXw1PjJvaMPaFV3lU2qobbwYy2gy9cO-oUMOtusMWjQmjWiZwr0v4M-fUYpSloUU8CvWsEdqfEg84Iq`
-  );
-  let data = await res.json();
-  //   console.log(data);
+  let data = res.json();
+  console.log(data);
 }
 
 // getToken();
 
+async function getData() {
+  let res = await fetch(
+    url +
+      `?access_token=ya29.a0AfH6SMBfrIKm3EQy0tK7y8HIeErf-uzDI2s3mDC-ADK04Gb99iFsvGB--WcY6iMaDQkV2KKZeKABTSSPFg-YYGqmXlBmZrW2ipo-HeeXgfDhZ_TWDeibkgG99KodQl-spq0go9yKrhJ5DIT0ZZcRufrCZTcg`
+  );
+  let data = await res.json();
+  console.log(data);
+}
+
+getData();
+
 //https://tharun-coder.github.io/Gmail_temp/#state=try_sample_request&
-//access_token=ya29.a0AfH6SMAahj-HXMdv-NmCEbKAem5mS8swb6hkuUydmG4yiv1Kn9wCQ9CeFw3jNj-gsh-oLx6INE6VrOXw1PjJvaMPaFV3lU2qobbwYy2gy9cO-oUMOtusMWjQmjWiZwr0v4M-fUYpSloUU8CvWsEdqfEg84Iq&
-//token_type=Bearer&expires_in=3599&scope=email%20profile%20https://www.googleapis.com/auth/userinfo.profile%20https://www.googleapis.com/auth/userinfo.email%20https://www.googleapis.com/auth/gmail.readonly%20https://www.googleapis.com/auth/drive.metadata.readonly%20openid&authuser=0&prompt=consent
+//access_token=ya29.a0AfH6SMBfrIKm3EQy0tK7y8HIeErf-uzDI2s3mDC-ADK04Gb99iFsvGB--WcY6iMaDQkV2KKZeKABTSSPFg-YYGqmXlBmZrW2ipo-HeeXgfDhZ_TWDeibkgG99KodQl-spq0go9yKrhJ5DIT0ZZcRufrCZTcg&
+//token_type=Bearer&expires_in=3598&scope=email%20profile%20https://www.googleapis.com/auth/drive.metadata.readonly%20openid%20https://www.googleapis.com/auth/gmail.readonly%20https://www.googleapis.com/auth/userinfo.profile%20https://www.googleapis.com/auth/userinfo.email%20https://mail.google.com/&authuser=0&prompt=none
