@@ -14,8 +14,11 @@ async function getToken() {
     state=state_parameter_passthrough_value&
     redirect_uri=https://tharun-coder.github.io/Gmail_temp/&
     client_id=${client_id}`,{
-       method:"GET"});
-//   let data = res.json();
+       method:"POST",
+       headers: {
+		'Content-Type': 'application/x-www-form-urlencoded'
+	}});
+  let data = res.json();
   console.log(res);
 }
 
