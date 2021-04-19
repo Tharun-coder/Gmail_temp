@@ -26,10 +26,11 @@ async function getData() {
       `?access_token=ya2.a90AfH6SMBfrIKm3EQy0tK7y8HIeErf-uzDI2s3mDC-ADK04Gb99iFsvGB--WcY6iMaDQkV2KKZeKABTSSPFg-YYGqmXlBmZrW2ipo-HeeXgfDhZ_TWDeibkgG99KodQl-spq0go9yKrhJ5DIT0ZZcRufrCZTcg`
   );
   let data = await res.json();
-  let messages = [];
-  messages.push(data.forEach((e) => getMessages(e.id)));
-
   console.log(data);
+  let messages = [];
+//   messages.push(data.forEach((e) => getMessages(e.id)));
+
+  
   console.log(messages);
 }
 
