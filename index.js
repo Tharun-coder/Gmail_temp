@@ -18,7 +18,7 @@ async function getToken() {
   console.log(data);
 }
 
-// getToken();
+getToken();
 
 async function getData() {
   try{
