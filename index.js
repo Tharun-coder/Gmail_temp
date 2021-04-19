@@ -21,6 +21,7 @@ async function getToken() {
 // getToken();
 
 async function getData() {
+  try{
   let res = await fetch(
     url +
       `?access_token=ya29.a0AfH6SMBhAotETbv7-9usgzN1bWm6kwXhp4AfLwKpLfXYsg2y-21nkBatN9uxNtnigKi0aGMEb-kaMkMOy_2kPskAaOJCHIP5H3s_JerjDloyDTH923NN7JHfgKliw_gyQAMEXcavpliGdbiHBYutqTHOrZwU`
@@ -29,20 +30,25 @@ async function getData() {
   console.log(data);
   let messages = [];
   data.messages.forEach((e) => messages.push(getMessages(e.id)));
-
-  
   console.log(messages);
+  } catch(err){
+    console.log(err)
+  }
 }
 
 getData();
 
 async function getMessages(id) {
+  try{
   let msg = await fetch(
     url +
       `/${id}?access_token=ya2.a90AfH6SMBfrIKm3EQy0tK7y8HIeErf-uzDI2s3mDC-ADK04Gb99iFsvGB--WcY6iMaDQkV2KKZeKABTSSPFg-YYGqmXlBmZrW2ipo-HeeXgfDhZ_TWDeibkgG99KodQl-spq0go9yKrhJ5DIT0ZZcRufrCZTcg`
   );
   let msg_data = await msg.json();
   return msg_data;
+  } catch(err){
+   console.log(err)
+  }
 }
 
 
