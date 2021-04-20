@@ -50,7 +50,5 @@ async function getMessages(id) {
       return err;
     }
   }
-}
-
   
 }
