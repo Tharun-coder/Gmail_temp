@@ -49,8 +49,7 @@ async function getMessages(id) {
  console.log(messages);
 }
 
-function onLoad()
-{
+function onLoad(){
   displayDataInbox();
   getData();
 }
