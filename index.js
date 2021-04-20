@@ -37,10 +37,6 @@ async function getData() {
 
 getData();
 
-for(i=0;i<message_id.length;i++){
-  getMessages(message_id[i]);
-}
-
 async function getMessages(id) {
     try {
       let msg = await fetch(
@@ -48,10 +44,9 @@ async function getMessages(id) {
       );
       let msg_res = await msg.json();
       messages.push(msg_res)
-      console.log(messages);
     } catch (err) {
       return err;
     }
   }
-  
+ console.log(messages);
 }
