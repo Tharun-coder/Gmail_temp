@@ -29,19 +29,14 @@ async function getData() {
   let data = await res.json();
   console.log(data);
   let messages = [];
-  data.messages.forEach((e) => messages.push(async function getMessages(e.id) {
-  try{
-  let msg = await fetch(
+  data.messages.forEach((e) => {
+    let msg = await fetch(
     url +
       `${userId}/messages/${id}?access_token=${access_token}`
   );
-  let msg_res = await msg.json();
-//   console.log(msg_res)
-  return msg_res;
-  } catch(err){
-    return err;
+  let msg_data = await msg.json();
+    messages.push(msg_data);
   }
-});
   console.log(messages);
   } catch(err){
     console.log(err)
@@ -49,7 +44,5 @@ async function getData() {
 }
 
 getData();
-
-
 
 }
