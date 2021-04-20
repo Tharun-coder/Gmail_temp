@@ -115,7 +115,7 @@ function displayDataInbox() {
     <i class="fa fa-star-o" aria-hidden="true"></i>`;
     msg_row.setAttribute("style", "border-bottom: 1px solid gray");
     let msg_from = createTag("div", "col-lg-2 col-sm-4 msg_from");
-    msg_from.innerText = data.payload.headers[22].value;
+    msg_from.innerText = data.payload.headers.find((e)=>e.name === "From").value;
     let msg_body = createTag("div", "col-lg-7 col-sm-12 msg_body");
     msg_body.innerHTML = `<b>${truncate(data.payload.headers[21].value)}</b> - ${truncate(data.snippet)}`;
     let msg_date = createTag("div", "col-lg-1 col-sm-3 date");
