@@ -40,7 +40,7 @@ async function getData() {
   }
 }
 
-getData();
+// getData();
 
 async function getMessages() {
   try{
