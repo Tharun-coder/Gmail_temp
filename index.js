@@ -119,7 +119,11 @@ function displayDataInbox() {
     let msg_body = createTag("div", "col-lg-7 col-sm-12 msg_body");
     msg_body.innerHTML = `<b>${truncate(data.payload.headers.find((e)=>e.name === "Subject").value)}</b> - ${truncate(data.snippet)}`;
     let msg_date = createTag("div", "col-lg-1 col-sm-3 date");
-    msg_date.innerText = data.payload.headers.find((e)=>e.name === "Date").value;
+    let date = new Date(data.payload.headers.find((e)=>e.name === "Date").value);
+    let date_time = `${
+    date.getHours() + 1 > 12 ? date.getHours() + 1 - 12 : date.getHours()
+  }:${date.getMinutes()} ${date.getHours() + 1 > 12 ? "PM" : "AM"}`;
+    msg_date.innerText = date_time;
 
     msg_row.append(msg_ckbx, msg_from, msg_body, msg_date);
     info_body.append(msg_row);
