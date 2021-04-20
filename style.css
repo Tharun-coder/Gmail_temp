@@ -26,6 +26,7 @@
   background-color: white;
   font-weight: bold;
   cursor: pointer;
+  border-bottom: 2px solid black; 
 }
 
 .msg_row {
