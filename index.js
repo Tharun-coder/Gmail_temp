@@ -108,7 +108,7 @@ inbox_btn.addEventListener('click', displayDataInbox);
   
 function displayDataInbox() {
   info_body.innerHTML = "";
-  messages.filter((e)=> e.labelIds[2]==="INBOX").forEach((data) => {
+  messages.filter((e)=> e.labelIds[1,2]===["CATEGORY_PERSONAL","INBOX"]).forEach((data) => {
     let msg_row = createTag("div", "row msg_row");
     let msg_ckbx = createTag("div", "col-lg-2 col-sm-4 msg_ckbx");
     msg_ckbx.innerHTML = `<input type="checkbox" id=${data.id}>&nbsp&nbsp
