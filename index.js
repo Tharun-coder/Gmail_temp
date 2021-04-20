@@ -44,8 +44,8 @@ async function getMessages(id) {
     url +
       `${userId}/messages/${id}?access_token=${access_token}`
   );
-  let msg_data = await msg.json().then((data)=>data);
-   return msg_data;
+  let msg_data = await msg.json();
+   return msg_data.then((data)=>data);
   return msg_data;
   } catch(err){
     return err;
