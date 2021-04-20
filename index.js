@@ -1,4 +1,3 @@
-let userId = "tharunece95@gmail.com";
 let url = `https://gmail.googleapis.com/gmail/v1/users/`;
 let scope = "https://mail.google.com/";
 let client_id =
