@@ -98,7 +98,7 @@ function displayDataSend() {
     <i class="fa fa-star-o" aria-hidden="true"></i>`;
     msg_row.setAttribute("style", "border-bottom: 1px solid gray");
     let msg_from = createTag("div", "col-lg-2 col-sm-4 msg_from");
-    msg_from.innerText = data.payload.headers[5].value;
+    msg_from.innerText = data.payload.headers[5].value.split('<')[0];
     let msg_body = createTag("div", "col-lg-7 col-sm-12 msg_body");
     msg_body.innerHTML = `<b>${data.payload.headers[3].value}</b> - ${truncate(data.snippet)}`;
     let msg_date = createTag("div", "col-lg-2 col-sm-3 date");
@@ -126,7 +126,7 @@ function displayDataInbox() {
     <i class="fa fa-star-o" aria-hidden="true"></i>`;
     msg_row.setAttribute("style", "border-bottom: 1px solid gray");
     let msg_from = createTag("div", "col-lg-2 col-sm-4 msg_from");
-    msg_from.innerText = data.payload.headers.find((e)=>e.name === "From").value;
+    msg_from.innerText = data.payload.headers.find((e)=>e.name === "From").value.split('<')[0];
     let msg_body = createTag("div", "col-lg-7 col-sm-12 msg_body");
     msg_body.innerHTML = `<b>${truncate(data.payload.headers.find((e)=>e.name === "Subject").value)}</b> - ${truncate(data.snippet)}`;
     let msg_date = createTag("div", "col-lg-1 col-sm-3 date");
@@ -145,141 +145,15 @@ function displayDataInbox() {
   
 }
 
-
-
-let inbox = [
-  {
-    id: 1,
-    from: {
-      name: "Vibhin U",
-      mail: "vibhin.u@gmail.com",
-    },
-    to: {
-      name: "Tharun Kumar V",
-      mail: "tharunece95@gmail.com",
-    },
-    subject: "Openings",
-    date: "9:11 AM",
-    message:
-      "Dear Tharun kumar, Immediate Job Opening with Cognizant in Coimbatore Location for Automation Testing on 10-04-21(Saturday)",
-  },
-  {
-    id: 2,
-    from: {
-      name: "Kala U",
-      mail: "kala.u@gmail.com",
-    },
-    to: {
-      name: "Tharun Kumar V",
-      mail: "tharunece95@gmail.com",
-    },
-    subject: "Wishes",
-    date: "Apr 13",
-    message: `Dear Zen Students Happy Tamil Newyear, Team!`,
-  },
-  {
-    id: 3,
-    from: {
-      name: "GUVI",
-      mail: "zen@guvi.in",
-    },
-    to: {
-      name: "Tharun Kumar V",
-      mail: "tharunece95@gmail.com",
-    },
-    subject: "Batch Timings",
-    date: "Apr 12",
-    message: `Hi Tharun Kumar, Thank you for registering for "B22 WD Session 1st April 2021".`,
-  },
-  {
-    id: 4,
-    from: {
-      name: "Mukesh Kumar",
-      mail: "gkmukesh.kumar@tcs.com",
-    },
-    to: {
-      name: "Tharun Kumar V",
-      mail: "tharunece95@gmail.com",
-    },
-    subject: "Vancancy in TCS",
-    date: "Apr 11",
-    message: `Dear Tharun Kumar Vijayakymar, Greetings from TATA Consultancy Services!!
-    Thank you for expressing your interest in exploring a career possibility with the TCS Family.
-    We are conducting an exclusive Drive for Nagpur Candidate’s (Kindly apply if you are interested for Nagpur)`,
-  },
-];
-
-let send = [
-  {
-    id: 1,
-    to: {
-      name: "Meiyazhagan",
-      mail: "kmeiyazhagan14@gmail.com",
-    },
-    subject: "CodeKata Clarification",
-    from: {
-      name: "Tharun Kumar V",
-      mail: "tharunece95@gmail.com",
-    },
-    date: "7:22 AM",
-    message: `Hi, As discussed, Please find the code in below link. In below fuction i couldn't read value of country.
-      Link - https://github.com/Tharun-coder/Covid_Tracker_API/`,
-  },
-  {
-    id: 2,
-    to: {
-      name: "Kala U",
-      mail: "kala.u@gmail.com",
-    },
-    subject: "Wishes",
-    from: {
-      name: "Tharun Kumar V",
-      mail: "tharunece95@gmail.com",
-    },
-    date: "Apr 13",
-    message: `Wishing you a Happy Tamil Puthandu`,
-  },
-  {
-    id: 3,
-    to: {
-      name: "GUVI",
-      mail: "zen@guvi.in",
-    },
-    subject: "Announcements",
-    from: {
-      name: "Tharun Kumar V",
-      mail: "tharunece95@gmail.com",
-    },
-    date: "Apr 12",
-    message: `Thanks, I will be there. `,
-  },
-  {
-    id: 4,
-    to: {
-      name: "Mukesh Kumar",
-      mail: "gkmukesh.kumar@tcs.com",
-    },
-    subject: "Requirements",
-    from: {
-      name: "Tharun Kumar V",
-      mail: "tharunece95@gmail.com",
-    },
-    date: "Apr 11",
-    message: `Hi, Thanks for your mail. I will prepare and send the document ASAP`,
-  },
-];
-
-let drafts = [];
-
 let info_body = document.querySelector(".body-info");
 
 
-function sendDraft() {
-  send.push(...drafts);
-  drafts.length === 0;
-  info_body.innerHTML = "";
-  alert("Message Send. Plese check in send items");
-}
+// function sendDraft() {
+//   send.push(...drafts);
+//   drafts.length === 0;
+//   info_body.innerHTML = "";
+//   alert("Message Send. Plese check in send items");
+// }
 
 function displayCompose() {
   info_body.innerHTML = "";
@@ -311,20 +185,20 @@ function composeSend() {
   if (recipient === "") {
     alert("Please enter Recipient to send");
   } else {
-    send.push({
-      id: 5,
-      to: {
-        name: "david",
-        mail: recipient,
-      },
-      subject: subject,
-      from: {
-        name: "Tharun Kumar V",
-        mail: "tharunece95@gmail.com",
-      },
-      date: date_time,
-      message,
-    });
+//     send.push({
+//       id: 5,
+//       to: {
+//         name: "david",
+//         mail: recipient,
+//       },
+//       subject: subject,
+//       from: {
+//         name: "Tharun Kumar V",
+//         mail: "tharunece95@gmail.com",
+//       },
+//       date: date_time,
+//       message,
+//     });
     alert("Message Send. Please check in Send items");
     recipient = "";
     subject = "";
@@ -343,20 +217,20 @@ function composeDraft() {
   if (recipient === "") {
     alert("Please enter Recipient to save draft");
   } else {
-    drafts.push({
-      id: 5,
-      to: {
-        name: "david",
-        mail: recipient,
-      },
-      subject: subject,
-      from: {
-        name: "Tharun Kumar V",
-        mail: "tharunece95@gmail.com",
-      },
-      date: date_time,
-      message,
-    });
+//     drafts.push({
+//       id: 5,
+//       to: {
+//         name: "david",
+//         mail: recipient,
+//       },
+//       subject: subject,
+//       from: {
+//         name: "Tharun Kumar V",
+//         mail: "tharunece95@gmail.com",
+//       },
+//       date: date_time,
+//       message,
+//     });
     alert("Message saved as draft. Please check in Drafts");
     recipient = "";
     subject = "";
