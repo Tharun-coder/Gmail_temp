@@ -69,7 +69,13 @@ async function getMessages(id) {
     let msg_body = createTag("div", "col-lg-6 col-sm-12 msg_body");
     msg_body.innerHTML = `<b>${data.payload.headers[3].value}</b> - ${truncate(data.snippet)}`;
     let msg_date = createTag("div", "col-lg-2 col-sm-3 date");
-    msg_date.innerText = data.payload.headers[1].value;
+   msg_date.setAttribute("style","font-size:15px")
+    let date = new Date(data.payload.headers.find((e)=>e.name === "Date").value);
+    let today = new Date();
+    let date_time = date.getDate()===today.getDate()?`${
+    date.getHours() + 1 > 12 ? date.getHours() + 1 - 12 : date.getHours()
+  }:${date.getMinutes()} ${date.getHours() + 1 > 12 ? "PM" : "AM"}`:`Apr ${date.getDate()}`;
+    msg_date.innerText = date_time;
 
     msg_row.append(msg_ckbx, msg_from, msg_body, msg_date);
     info_body.append(msg_row);
@@ -96,8 +102,13 @@ function displayDataSend() {
     let msg_body = createTag("div", "col-lg-7 col-sm-12 msg_body");
     msg_body.innerHTML = `<b>${data.payload.headers[3].value}</b> - ${truncate(data.snippet)}`;
     let msg_date = createTag("div", "col-lg-2 col-sm-3 date");
-    msg_date.innerText = data.payload.headers[1].value;
-
+    msg_date.setAttribute("style","font-size:15px")
+    let date = new Date(data.payload.headers.find((e)=>e.name === "Date").value);
+    let today = new Date();
+    let date_time = date.getDate()===today.getDate()?`${
+    date.getHours() + 1 > 12 ? date.getHours() + 1 - 12 : date.getHours()
+  }:${date.getMinutes()} ${date.getHours() + 1 > 12 ? "PM" : "AM"}`:`Apr ${date.getDate()}`;
+    msg_date.innerText = date_time;
     msg_row.append(msg_ckbx, msg_from, msg_body, msg_date);
     info_body.append(msg_row);
   });
@@ -119,6 +130,7 @@ function displayDataInbox() {
     let msg_body = createTag("div", "col-lg-7 col-sm-12 msg_body");
     msg_body.innerHTML = `<b>${truncate(data.payload.headers.find((e)=>e.name === "Subject").value)}</b> - ${truncate(data.snippet)}`;
     let msg_date = createTag("div", "col-lg-1 col-sm-3 date");
+    msg_date.setAttribute("style","font-size:15px")
     let date = new Date(data.payload.headers.find((e)=>e.name === "Date").value);
     let today = new Date();
     let date_time = date.getDate()===today.getDate()?`${
