@@ -1,5 +1,5 @@
 let userId = "tharunece95@gmail.com";
-let url = `https://gmail.googleapis.com/gmail/v1/users/${userId}/messages`;
+let url = `https://gmail.googleapis.com/gmail/v1/users/`;
 let scope = "https://mail.google.com/";
 let client_id =
   "483228225913-7tmuhk2cicdd85nbo4nboaujmn6lr0sk.apps.googleusercontent.com";
@@ -14,7 +14,7 @@ function onSignIn(googleUser) {
 //         console.log("Given Name: " + profile.getGivenName());
 //         console.log("Family Name: " + profile.getFamilyName());
 //         console.log("Image URL: " + profile.getImageUrl());
-//         console.log("Email: " + profile.getEmail());
+         let userId = profile.getEmail();
 
         // The ID token you need to pass to your backend:
         var access_token = googleUser.getAuthResponse(true).access_token;
@@ -25,7 +25,7 @@ async function getData() {
   try{
   let res = await fetch(
     url +
-      `/178e9d13d2acc926?access_token=${access_token}`
+      `${userId}/messages/178e9d13d2acc926?access_token=${access_token}`
   );
   let data = await res.json();
   console.log(data);
@@ -43,7 +43,7 @@ async function getMessages() {
   try{
   let msg = await fetch(
     url +
-      `/178e9d13d2acc926?access_token=${access_token}`
+      `${userId}/messages/178e9d13d2acc926?access_token=${access_token}`
   );
   let msg_data = await msg.json();
     console.log(msg_data)
@@ -53,5 +53,5 @@ async function getMessages() {
   }
 }
 
-// getMessages()
+getMessages()
 }
