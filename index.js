@@ -6,6 +6,21 @@ let client_id =
 
 let token_url = "https://accounts.google.com/o/oauth2/token";
 
+function onSignIn(googleUser) {
+        // Useful data for your client-side scripts:
+        var profile = googleUser.getBasicProfile();
+        console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+        console.log("Full Name: " + profile.getName());
+        console.log("Given Name: " + profile.getGivenName());
+        console.log("Family Name: " + profile.getFamilyName());
+        console.log("Image URL: " + profile.getImageUrl());
+        console.log("Email: " + profile.getEmail());
+
+        // The ID token you need to pass to your backend:
+        var id_token = JSON.stringify(googleUser.getAuthResponse(true));
+        console.log("ID Token: " + id_token);
+      }
+
 async function getToken() {
   let res = await fetch(`https://accounts.google.com/o/oauth2/v2/auth?
     scope=${scope}&
