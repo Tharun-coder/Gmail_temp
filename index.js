@@ -117,9 +117,9 @@ function displayDataInbox() {
     let msg_from = createTag("div", "col-lg-2 col-sm-4 msg_from");
     msg_from.innerText = data.payload.headers.find((e)=>e.name === "From").value;
     let msg_body = createTag("div", "col-lg-7 col-sm-12 msg_body");
-    msg_body.innerHTML = `<b>${truncate(data.payload.headers[21].value)}</b> - ${truncate(data.snippet)}`;
+    msg_body.innerHTML = `<b>${truncate(data.payload.headers.find((e)=>e.name === "Subject").value)}</b> - ${truncate(data.snippet)}`;
     let msg_date = createTag("div", "col-lg-1 col-sm-3 date");
-    msg_date.innerText = data.payload.headers[20].value;
+    msg_date.innerText = data.payload.headers.find((e)=>e.name === "Date").value;
 
     msg_row.append(msg_ckbx, msg_from, msg_body, msg_date);
     info_body.append(msg_row);
