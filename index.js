@@ -39,10 +39,10 @@ async function getData() {
 getData();
 let messages = []
 for(i=0;i<message_id.length;i++){
-async function getMessages(messageid[i]) {
+async function getMessages(message_id[i]) {
     try {
       let msg = await fetch(
-        url + `${userId}/messages/${messageid[i]}?access_token=${access_token}`
+        url + `${userId}/messages/${message_id[i]}?access_token=${access_token}`
       );
       let msg_res = await msg.json();
         console.log(msg_res)
