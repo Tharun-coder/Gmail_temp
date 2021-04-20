@@ -29,7 +29,7 @@ async function getData() {
   let data = await res.json();
   console.log(data);
   let messages = [];
-  data.messages.forEach((e) => messages.push(getMessages(e.id)));
+  data.messages.forEach((e) => messages.push(getMessages(e.id).then((msg_data)=>msg_data));
   console.log(messages);
   } catch(err){
     console.log(err)
