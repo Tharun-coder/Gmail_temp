@@ -4,7 +4,7 @@ let client_id =
   "483228225913-7tmuhk2cicdd85nbo4nboaujmn6lr0sk.apps.googleusercontent.com";
 
 let token_url = "https://accounts.google.com/o/oauth2/token";
-let drafts_btn = document.querySelector('.draft-btn')
+let draft_btn = document.querySelector('.draft-btn')
 
 function onSignIn(googleUser) {
         // Useful data for your client-side scripts:
