@@ -50,6 +50,34 @@ async function getMessages(id) {
   }
   
  console.log(messages);
+  
+ function displayDataDrafts() {
+  info_body.innerHTML = "";
+  messages.filter((e)=> e.labelIds[0]==="DRAFT").forEach((data) => {
+    let msg_row = createTag("div", "row msg_row");
+    let msg_ckbx = createTag("div", "col-lg-2 col-sm-4 msg_ckbx");
+    msg_ckbx.innerHTML = `<input type="checkbox" id=${data.id}>&nbsp&nbsp
+    <i class="fa fa-star-o" aria-hidden="true"></i>`;
+    msg_row.setAttribute("style", "border-bottom: 1px solid gray");
+    let msg_from = createTag("div", "col-lg-2 col-sm-4 msg_from");
+    msg_from.innerText = data.payload.headers[4].value;
+    let msg_body = createTag("div", "col-lg-6 col-sm-12 msg_body");
+    msg_body.innerHTML = `<b>${data.payload.headers[3].value}</b> - ${truncate(data.snippet)}`;
+    let msg_date = createTag("div", "col-lg-2 col-sm-3 date");
+    msg_date.innerText = data.payload.headers[1].value;
+
+    msg_row.append(msg_ckbx, msg_from, msg_body, msg_date);
+    info_body.append(msg_row);
+  });
+  if (info_body.innerHTML !== "") {
+    let send_draft = createTag("div", "col-4 mt-2");
+    send_draft.innerHTML = `<button class="btn btn-primary btn-sm" onclick="sendDraft()">Send Draft</button>`;
+    info_body.append(send_draft);
+  }
+}
+
+  
+  
 }
 
 
@@ -220,30 +248,30 @@ function displayDataSend() {
   });
 }
 
-function displayDataDrafts() {
-  info_body.innerHTML = "";
-  drafts.forEach((data) => {
-    let msg_row = createTag("div", "row msg_row");
-    let msg_ckbx = createTag("div", "col-lg-2 col-sm-4 msg_ckbx");
-    msg_ckbx.innerHTML = `<input type="checkbox" id=${data.id}>&nbsp&nbsp
-    <i class="fa fa-star-o" aria-hidden="true"></i>`;
-    msg_row.setAttribute("style", "border-bottom: 1px solid gray");
-    let msg_from = createTag("div", "col-lg-2 col-sm-4 msg_from");
-    msg_from.innerText = data.from.name;
-    let msg_body = createTag("div", "col-lg-6 col-sm-12 msg_body");
-    msg_body.innerHTML = `<b>${data.subject}</b> - ${truncate(data.message)}`;
-    let msg_date = createTag("div", "col-lg-2 col-sm-3 date");
-    msg_date.innerText = data.date;
+// function displayDataDrafts() {
+//   info_body.innerHTML = "";
+//   drafts.forEach((data) => {
+//     let msg_row = createTag("div", "row msg_row");
+//     let msg_ckbx = createTag("div", "col-lg-2 col-sm-4 msg_ckbx");
+//     msg_ckbx.innerHTML = `<input type="checkbox" id=${data.id}>&nbsp&nbsp
+//     <i class="fa fa-star-o" aria-hidden="true"></i>`;
+//     msg_row.setAttribute("style", "border-bottom: 1px solid gray");
+//     let msg_from = createTag("div", "col-lg-2 col-sm-4 msg_from");
+//     msg_from.innerText = data.from.name;
+//     let msg_body = createTag("div", "col-lg-6 col-sm-12 msg_body");
+//     msg_body.innerHTML = `<b>${data.subject}</b> - ${truncate(data.message)}`;
+//     let msg_date = createTag("div", "col-lg-2 col-sm-3 date");
+//     msg_date.innerText = data.date;
 
-    msg_row.append(msg_ckbx, msg_from, msg_body, msg_date);
-    info_body.append(msg_row);
-  });
-  if (info_body.innerHTML !== "") {
-    let send_draft = createTag("div", "col-4 mt-2");
-    send_draft.innerHTML = `<button class="btn btn-primary btn-sm" onclick="sendDraft()">Send Draft</button>`;
-    info_body.append(send_draft);
-  }
-}
+//     msg_row.append(msg_ckbx, msg_from, msg_body, msg_date);
+//     info_body.append(msg_row);
+//   });
+//   if (info_body.innerHTML !== "") {
+//     let send_draft = createTag("div", "col-4 mt-2");
+//     send_draft.innerHTML = `<button class="btn btn-primary btn-sm" onclick="sendDraft()">Send Draft</button>`;
+//     info_body.append(send_draft);
+//   }
+// }
 
 function sendDraft() {
   send.push(...drafts);
