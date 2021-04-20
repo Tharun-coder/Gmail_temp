@@ -15,7 +15,7 @@
 }
 
 .body-info {
-  overflow: scroll;
+  overflow-y: scroll;
   height: 700px;
   background-color: rgb(247, 243, 243);
   border-bottom: 2px solid gray;
