@@ -35,6 +35,8 @@ async function getData() {
   }
 }
 
+getData();
+  
 async function getMessages(id) {
     try {
       let msg = await fetch(
@@ -46,13 +48,11 @@ async function getMessages(id) {
       return err;
     }
   }
+  
  console.log(messages);
 }
 
-function onLoad(){
-  displayDataInbox();
-  getData();
-}
+
 
 let inbox = [
   {
