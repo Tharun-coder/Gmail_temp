@@ -28,7 +28,7 @@ async function getData() {
   try{
   let res = await fetch(
     url +
-      `/178e9d13d2acc926?access_token=ya29.a0AfH6SMB6NuYpIwZ-Tcv0k3Q1zx1pQ1El_GyJ2D62_JH-vFZ-j34q1xPSdnD9-vqxWNbSMkeEgLdk6qkhRYeAjA1iDg7ntAox_B2zLtzN9qGkn6_OYZ69HcTsbfVVDFjPFtvx4vVXt7BEBkaoGOPSF55QIA78Nw`
+      `/178e9d13d2acc926?access_token=ya29.a0AfH6SMBI0KZ8g0RDaSsSOuut4hjPdukwaJb7TuIlMhq6GZ1iH--tgBwfmdnCpGaQYpQ06rjqe00iLqofajwcXBOX83FduY813JsdD8whIojCpNdh1l4q7SYoLRWpNQhKchyZM4EXshs3BqoZebnEANH8xegDig`
   );
   let data = await res.json();
   console.log(data);
@@ -40,7 +40,7 @@ async function getData() {
   }
 }
 
-// getData();
+getData();
 
 async function getMessages() {
   try{
