@@ -25,7 +25,7 @@ async function getData() {
   try{
   let res = await fetch(
     url +
-      `${userId}/messages/178e9d13d2acc926?access_token=${access_token}`
+      `${userId}/messages?access_token=${access_token}`
   );
   let data = await res.json();
   console.log(data);
