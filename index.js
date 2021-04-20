@@ -19,7 +19,7 @@ function onSignIn(googleUser) {
         var access_token = googleUser.getAuthResponse(true).access_token;
         console.log("Access Token: " + access_token);
       
-
+let messages = [];
 async function getData() {
   try{
   let res = await fetch(
@@ -28,15 +28,8 @@ async function getData() {
   );
   let data = await res.json();
   console.log(data);
-  let messages = [];
-  data.messages.forEach((e) => {
-    let msg = await fetch(
-    url +
-      `${userId}/messages/${id}?access_token=${access_token}`
-  );
-  let msg_data = await msg.json();
-    messages.push(msg_data);
-  }
+  
+  data.messages.forEach((e) => messages.push(e.id)
   console.log(messages);
   } catch(err){
     console.log(err)
@@ -45,4 +38,19 @@ async function getData() {
 
 getData();
 
+async function getMessages(id) {
+    try {
+      let msg = await fetch(
+        url + `${userId}/messages/${id}?access_token=${access_token}`
+      );
+      let msg_res = await msg.json();
+      //   console.log(msg_res)
+      return msg_res;
+    } catch (err) {
+      return err;
+    }
+  }
+}
+
+  
 }
