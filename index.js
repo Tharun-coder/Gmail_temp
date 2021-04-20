@@ -29,7 +29,7 @@ async function getData() {
   let data = await res.json();
   console.log(data);
   let messages = [];
-  data.messages.forEach((e) => messages.push(getMessages(e.id).then((msg_data)=>msg_data));
+  data.messages.forEach((e) => messages.push(getMessages(e.id).then((msg_data)=>msg_data)));
   console.log(messages);
   } catch(err){
     console.log(err)
@@ -45,7 +45,7 @@ async function getMessages(id) {
       `${userId}/messages/${id}?access_token=${access_token}`
   );
   let msg_res = await msg.json();
-  console.log(msg_res)
+//   console.log(msg_res)
   return msg_res;
   } catch(err){
     return err;
