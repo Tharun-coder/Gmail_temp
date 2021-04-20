@@ -65,7 +65,7 @@ async function getMessages(id) {
     <i class="fa fa-star-o" aria-hidden="true"></i>`;
     msg_row.setAttribute("style", "border-bottom: 1px solid gray");
     let msg_from = createTag("div", "col-lg-2 col-sm-4 msg_from");
-    msg_from.innerText = data.payload.headers[4].value;
+    msg_from.innerText = data.payload.headers[4].value.split('<')[0];
     let msg_body = createTag("div", "col-lg-6 col-sm-12 msg_body");
     msg_body.innerHTML = `<b>${data.payload.headers[3].value}</b> - ${truncate(data.snippet)}`;
     let msg_date = createTag("div", "col-lg-2 col-sm-3 date");
@@ -371,6 +371,6 @@ function createTag(ele, ele_class) {
 }
 
 function truncate(str) {
-  if (str.length > 60) return str.substr(0, 60) + "...";
+  if (str.length > 30) return str.substr(0, 30) + "...";
   else return str;
 }
