@@ -146,8 +146,6 @@ function displayDataInbox() {
 let composeDraft_btn = document.querySelector('#draft')
 let composeSend_btn = document.querySelector('#send')
 
-console.log(composeDraft_btn, composeSend_btn)
-  
 composeDraft_btn.addEventListener('click', composeDraft);
   
 function composeDraft() {
@@ -194,7 +192,7 @@ function composeSend() {
         From: "tharunece95@gmail.com",
         Subject: "This is the subject",
         Body: "And this is the body",
-      }).then((message) => alert("Message Send"));
+      }).then((message) => alert("Message Send", message));
     recipient = "";
     subject = "";
     message = "";
