@@ -192,18 +192,6 @@ function composeSend() {
     message = "";
   }
 }
- 
-}
-
-let info_body = document.querySelector(".body-info");
-
-
-// function sendDraft() {
-//   send.push(...drafts);
-//   drafts.length === 0;
-//   info_body.innerHTML = "";
-//   alert("Message Send. Plese check in send items");
-// }
 
 function displayCompose() {
   info_body.innerHTML = "";
@@ -223,6 +211,20 @@ function displayCompose() {
   msg_compose.append(msg_header, msg_to, msg_subject, msg_body, btns);
   info_body.append(msg_compose);
 }
+
+}
+
+let info_body = document.querySelector(".body-info");
+
+
+// function sendDraft() {
+//   send.push(...drafts);
+//   drafts.length === 0;
+//   info_body.innerHTML = "";
+//   alert("Message Send. Plese check in send items");
+// }
+
+
 
 function createTag(ele, ele_class) {
   let element = document.createElement(ele);
