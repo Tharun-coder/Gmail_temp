@@ -3,6 +3,7 @@ let scope = "https://mail.google.com/";
 let client_id =
   "483228225913-7tmuhk2cicdd85nbo4nboaujmn6lr0sk.apps.googleusercontent.com";
 
+let info_body = document.querySelector(".body-info");
 let token_url = "https://accounts.google.com/o/oauth2/token";
 let draft_btn = document.querySelector('.draft-btn')
 let send_btn = document.querySelector('.send-btn')
@@ -217,9 +218,6 @@ function displayCompose() {
 
   displayCompose();
 }
-
-let info_body = document.querySelector(".body-info");
-
 
 // function sendDraft() {
 //   send.push(...drafts);
