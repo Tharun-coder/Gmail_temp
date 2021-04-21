@@ -8,6 +8,7 @@ let draft_btn = document.querySelector('.draft-btn')
 let send_btn = document.querySelector('.send-btn')
 let inbox_btn = document.querySelector('.inbox-btn')
 let composeDraft_btn = document.querySelector('.composeDraft-btn')
+let composeSend_btn = document.querySelector('.composeSend-btn')
 
 function onSignIn(googleUser) {
         // Useful data for your client-side scripts:
@@ -157,28 +158,42 @@ function composeDraft() {
   if (recipient === "") {
     alert("Please enter Recipient to save draft");
   } else {
-    gapi.client.gmail.users.messages.send({
-    userId: userId,
-    requestBody: {
-        // same response with any of these
-        raw: reallyEncodedMessage
-        // raw: encodedMessage
-        // raw: message
-    }
-//      resource: { // Modified
-//     // same response with any of these
-//     raw: reallyEncodedMessage
-//     // raw: encodedMessage
-//     // raw: message
-//    }
-}).then(function () { console.log("done!")});
+   
     alert("Message saved as draft. Please check in Drafts");
     recipient = "";
     subject = "";
     message = "";
   }
 }
-  
+
+composeSend_btn.addEventListener('click', composeSend);
+
+function composeSend() {
+  let recipient = document.querySelector("#recipient").value;
+  let subject = document.querySelector("#subject").value;
+  let message = document.querySelector("#msg_body").value;
+  let date = new Date();
+  let date_time = `${
+    date.getHours() + 1 > 12 ? date.getHours() + 1 - 12 : date.getHours()
+  }:${date.getMinutes()} ${date.getHours() + 1 > 12 ? "PM" : "AM"}`;
+  if (recipient === "") {
+    alert("Please enter Recipient to send");
+  } else {
+  Email.send({
+        Host: "smtp.elasticemail.com", //host-2525
+        Username: "tharunece95@gmail.com",
+        Password: "DFD4DA7DE010242519BC295F9BF43845D36F",
+        To: "tharuncoder95@gmail.com",
+        From: "tharunece95@gmail.com",
+        Subject: "This is the subject",
+        Body: "And this is the body",
+      }).then((message) => alert("Message Send"));
+    recipient = "";
+    subject = "";
+    message = "";
+  }
+}
+ 
 }
 
 let info_body = document.querySelector(".body-info");
@@ -209,40 +224,6 @@ function displayCompose() {
   msg_compose.append(msg_header, msg_to, msg_subject, msg_body, btns);
   info_body.append(msg_compose);
 }
-
-function composeSend() {
-  let recipient = document.querySelector("#recipient").value;
-  let subject = document.querySelector("#subject").value;
-  let message = document.querySelector("#msg_body").value;
-  let date = new Date();
-  let date_time = `${
-    date.getHours() + 1 > 12 ? date.getHours() + 1 - 12 : date.getHours()
-  }:${date.getMinutes()} ${date.getHours() + 1 > 12 ? "PM" : "AM"}`;
-  if (recipient === "") {
-    alert("Please enter Recipient to send");
-  } else {
-//     send.push({
-//       id: 5,
-//       to: {
-//         name: "david",
-//         mail: recipient,
-//       },
-//       subject: subject,
-//       from: {
-//         name: "Tharun Kumar V",
-//         mail: "tharunece95@gmail.com",
-//       },
-//       date: date_time,
-//       message,
-//     });
-    alert("Message Send. Please check in Send items");
-    recipient = "";
-    subject = "";
-    message = "";
-  }
-}
-
-
 
 function createTag(ele, ele_class) {
   let element = document.createElement(ele);
