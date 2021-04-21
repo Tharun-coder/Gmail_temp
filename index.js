@@ -112,7 +112,6 @@ function displayDataSend() {
   });
 }
 
-  
 inbox_btn.addEventListener('click', displayDataInbox);
   
 function displayDataInbox() {
@@ -218,7 +217,7 @@ function displayCompose() {
   let msg_body = createTag("div", "col-lg-12 col-sm-12 mt-2");
   msg_body.innerHTML = `<textarea id="msg_body" cols="30" rows="10" class="form-control"></textarea>`;
   let btns = createTag("div", "col-lg-12 col-sm-12 mt-2");
-  btns.innerHTML = `<button class="btn btn-primary btn-sm" id="send" onclick="composeSend()">Send</button>
+  btns.innerHTML = `<button class="btn btn-primary btn-sm composeSend-btn" id="send">Send</button>
   <button class="btn btn-secondary btn-sm composeDraft-btn" id="draft">Save as Draft</button>`;
 
   msg_compose.append(msg_header, msg_to, msg_subject, msg_body, btns);
