@@ -12,6 +12,8 @@ let compose_btn = document.querySelector('.compose-btn')
 let composeDraft_btn = document.querySelector('#draft')
 let composeSend_btn = document.querySelector('#send')
 
+console.log(composeDraft_btn, composeSend_btn)
+
 function onSignIn(googleUser) {
         // Useful data for your client-side scripts:
         var profile = googleUser.getBasicProfile();
@@ -141,8 +143,8 @@ function displayDataInbox() {
     info_body.append(msg_row);
   });
 }
-  
-//  composeDraft_btn.addEventListener('click', composeDraft);
+   displayCompose();
+composeDraft_btn.addEventListener('click', composeDraft);
   
 function composeDraft() {
   let message = `From: userId\r\n To: ${document.querySelector("#recipient").value}\r\n Subject: ${document.querySelector("#subject").value} \r\n\r\n
@@ -216,7 +218,7 @@ function displayCompose() {
   info_body.append(msg_compose);
 }
 
-  displayCompose();
+ 
 }
 
 // function sendDraft() {
