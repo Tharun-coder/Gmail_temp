@@ -142,7 +142,7 @@ function displayDataInbox() {
   });
 }
   
- composeDraft_btn.addEventListener('click', composeDraft);
+//  composeDraft_btn.addEventListener('click', composeDraft);
   
 function composeDraft() {
   let message = `From: userId\r\n To: ${document.querySelector("#recipient").value}\r\n Subject: ${document.querySelector("#subject").value} \r\n\r\n
