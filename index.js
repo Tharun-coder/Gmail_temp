@@ -7,6 +7,7 @@ let token_url = "https://accounts.google.com/o/oauth2/token";
 let draft_btn = document.querySelector('.draft-btn')
 let send_btn = document.querySelector('.send-btn')
 let inbox_btn = document.querySelector('.inbox-btn')
+let compose_btn = document.querySelector('.compose-btn')
 let composeDraft_btn = document.querySelector('#draft')
 let composeSend_btn = document.querySelector('.#send')
 
@@ -193,6 +194,8 @@ function composeSend() {
   }
 }
 
+  compose_btn.addEventListener('click', displayCompose);
+ 
 function displayCompose() {
   info_body.innerHTML = "";
   let msg_compose = createTag("div", "row msg_compose");
@@ -212,6 +215,7 @@ function displayCompose() {
   info_body.append(msg_compose);
 }
 
+  displayCompose();
 }
 
 let info_body = document.querySelector(".body-info");
