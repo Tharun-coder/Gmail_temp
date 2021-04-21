@@ -165,12 +165,12 @@ function composeDraft() {
         // raw: encodedMessage
         // raw: message
     }
-     resource: { // Modified
-    // same response with any of these
-    raw: reallyEncodedMessage
-    // raw: encodedMessage
-    // raw: message
-   }
+//      resource: { // Modified
+//     // same response with any of these
+//     raw: reallyEncodedMessage
+//     // raw: encodedMessage
+//     // raw: message
+//    }
 }).then(function () { console.log("done!")});
     alert("Message saved as draft. Please check in Drafts");
     recipient = "";
