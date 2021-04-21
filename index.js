@@ -7,6 +7,7 @@ let token_url = "https://accounts.google.com/o/oauth2/token";
 let draft_btn = document.querySelector('.draft-btn')
 let send_btn = document.querySelector('.send-btn')
 let inbox_btn = document.querySelector('.inbox-btn')
+let composeDraft_btn = document.querySelector('.composeDraft-btn')
 
 function onSignIn(googleUser) {
         // Useful data for your client-side scripts:
@@ -138,6 +139,46 @@ function displayDataInbox() {
     info_body.append(msg_row);
   });
 }
+  
+ composeDraft_btn.addEventListener('click', composeDraft);
+  
+function composeDraft() {
+  let message = `From: userId\r\n To: ${document.querySelector("#recipient").value}\r\n Subject: ${document.querySelector("#subject").value} \r\n\r\n
+  ${document.querySelector("#msg_body").value}`;
+  
+  // The body needs to be base64url encoded.
+  const encodedMessage = btoa(message)
+
+  const reallyEncodedMessage = encodedMessage.replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '')
+  let date = new Date();
+  let date_time = `${
+    date.getHours() + 1 > 12 ? date.getHours() + 1 - 12 : date.getHours()
+  }:${date.getMinutes()} ${date.getHours() + 1 > 12 ? "PM" : "AM"}`;
+  if (recipient === "") {
+    alert("Please enter Recipient to save draft");
+  } else {
+    gapi.client.gmail.users.messages.send({
+    userId: userId,
+    requestBody: {
+        // same response with any of these
+        raw: reallyEncodedMessage
+        // raw: encodedMessage
+        // raw: message
+    }
+     resource: { // Modified
+    // same response with any of these
+    raw: reallyEncodedMessage
+    // raw: encodedMessage
+    // raw: message
+   }
+}).then(function () { console.log("done!")});
+    alert("Message saved as draft. Please check in Drafts");
+    recipient = "";
+    subject = "";
+    message = "";
+  }
+}
+  
 }
 
 let info_body = document.querySelector(".body-info");
@@ -201,37 +242,7 @@ function composeSend() {
   }
 }
 
-function composeDraft() {
-  let recipient = document.querySelector("#recipient").value;
-  let subject = document.querySelector("#subject").value;
-  let message = document.querySelector("#msg_body").value;
-  let date = new Date();
-  let date_time = `${
-    date.getHours() + 1 > 12 ? date.getHours() + 1 - 12 : date.getHours()
-  }:${date.getMinutes()} ${date.getHours() + 1 > 12 ? "PM" : "AM"}`;
-  if (recipient === "") {
-    alert("Please enter Recipient to save draft");
-  } else {
-//     drafts.push({
-//       id: 5,
-//       to: {
-//         name: "david",
-//         mail: recipient,
-//       },
-//       subject: subject,
-//       from: {
-//         name: "Tharun Kumar V",
-//         mail: "tharunece95@gmail.com",
-//       },
-//       date: date_time,
-//       message,
-//     });
-    alert("Message saved as draft. Please check in Drafts");
-    recipient = "";
-    subject = "";
-    message = "";
-  }
-}
+
 
 function createTag(ele, ele_class) {
   let element = document.createElement(ele);
