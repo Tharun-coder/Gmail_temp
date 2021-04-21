@@ -9,10 +9,7 @@ let draft_btn = document.querySelector('.draft-btn')
 let send_btn = document.querySelector('.send-btn')
 let inbox_btn = document.querySelector('.inbox-btn')
 let compose_btn = document.querySelector('.compose-btn')
-let composeDraft_btn = document.querySelector('#draft')
-let composeSend_btn = document.querySelector('#send')
 
-console.log(composeDraft_btn, composeSend_btn)
 
 function onSignIn(googleUser) {
         // Useful data for your client-side scripts:
@@ -143,7 +140,14 @@ function displayDataInbox() {
     info_body.append(msg_row);
   });
 }
+  
    displayCompose();
+  
+let composeDraft_btn = document.querySelector('#draft')
+let composeSend_btn = document.querySelector('#send')
+
+console.log(composeDraft_btn, composeSend_btn)
+  
 composeDraft_btn.addEventListener('click', composeDraft);
   
 function composeDraft() {
