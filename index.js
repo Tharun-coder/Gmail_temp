@@ -7,7 +7,7 @@ let token_url = "https://accounts.google.com/o/oauth2/token";
 let draft_btn = document.querySelector('.draft-btn')
 let send_btn = document.querySelector('.send-btn')
 let inbox_btn = document.querySelector('.inbox-btn')
-let composeDraft_btn = document.querySelector('.composeDraft-btn')
+let composeDraft_btn = document.querySelector('#draft')
 let composeSend_btn = document.querySelector('.composeSend-btn')
 
 function onSignIn(googleUser) {
